@@ -1,0 +1,47 @@
+<h2>Welcome to Magento</h2>
+<?php
+
+/**
+ * @var \Egits\HelloWorld\Block\Index $block
+ */
+
+echo $block->name();
+?>
+</br>
+<?php
+echo $block->getname();
+?>
+<style>
+table {  font-family: arial, sans-serif;  border-collapse: collapse;  width: 100%;  margin-top: 30px;}
+td, th {  border: 1px solid #dddddd;  text-align: left;  padding: 8px;  }
+tr:nth-child(even) { background-color: #dddddd; }
+.post-id{width:2%} .post-name{width:30%}
+
+</style>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Title</th>
+    <th>Date</th>
+
+
+  </tr>
+    <?php
+    $result = $block->getPostCollection();
+        foreach ($result as $post){
+            echo '<tr>
+                    <td>'.$post->getId_column().'</td>
+                    <td>'.$post->getTitle().'</td>
+                    <td>'.$post->getDate_closed().'</td>
+                  </tr>';
+        }
+//        $a = 12;
+//       $value = $post->load($a);
+//       $value -> delete();
+
+    ?>
+</table>
+
+</body>
+</html>
