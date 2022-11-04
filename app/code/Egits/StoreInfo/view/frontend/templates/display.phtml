@@ -1,0 +1,27 @@
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>City</th>
+        <th>Hours</th>
+        <th>Country</th>
+        <th>Region</th>
+    </tr>
+
+
+<?php
+$currentStore = $block->newFunction();
+   
+   echo"<tr><td>".$currentStore->getName()."" ;
+   echo"<td>".$currentStore->getPhone()."" ;
+   echo"<td>".$currentStore->getCity()."" ;
+   echo"<td>".$currentStore->getHours()."" ;
+   echo"<td>".$currentStore->getCountry()."" ;
+   echo"<td>".$currentStore->getRegion()."" ;
+   
+   echo "</tr>";
+
+
+
+echo "</table>";
