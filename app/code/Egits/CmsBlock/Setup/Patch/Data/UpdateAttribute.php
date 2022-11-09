@@ -29,9 +29,7 @@ class UpdateAttribute implements DataPatchInterface
        $eavSetup->updateAttribute(Product::ENTITY, 
        'Discount',
         [
-           'frontend_label' => 'Discount',
-           'input' => 'text',
-           
+           'label' => 'Discount',                 
         ]
          );
     }
