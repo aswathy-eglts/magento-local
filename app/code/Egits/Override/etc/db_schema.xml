@@ -1,0 +1,13 @@
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="customer_login_demo_table">
+        <column xsi:type="int" name="id_column" padding="10" unsigned="true" nullable="false" comment="Entity Id"/>
+        <column xsi:type="varchar" name="Email" nullable="false" comment="customer email"/>
+        <column xsi:type="timestamp" name="time_occurred"  comment="Time of event"/>
+          <column xsi:type="timestamp" name="update_time"  comment="update time"/>
+        <column xsi:type="int" name="Login_attempt"  comment="count"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id_column"/>
+        </constraint>
+   </table>
+</schema>
