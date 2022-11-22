@@ -11,12 +11,12 @@
       <!-- <type name="Magento\Customer\Controller\Account\LoginPost">
         <plugin name="redirect_custom_url" type="Egits\Override\Plugin\RedirectCustomUrl" sortOrder="1"/>
     </type> --> 
- <!-- <type name="\Magento\Cms\Controller\Page\View">
+ <type name="\Magento\Cms\Controller\Page\View">
         <plugin name="before-plugin"
                 type="Egits\Override\Plugin\Plugin"
                 sortOrder="10"
                 disabled="false"/>
-    </type> -->
+    </type>
     <!-- <type name="Magento\Customer\Model\Session ">
             <plugin name="customer_login_attempts" type="Egits\Override\Plugin\Customer\Model\Session\log" />
         </type> -->
