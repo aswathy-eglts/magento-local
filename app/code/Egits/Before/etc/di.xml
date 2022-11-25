@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+   <type name="Egits\Before\Logger\Handler">
+       <arguments>
+           <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+       </arguments>
+   </type>
+   <type name="Egits\Before\Logger\Logger">
+       <arguments>
+           <argument name="name" xsi:type="string">Custom_Log</argument>
+           <argument name="handlers"  xsi:type="array">
+               <item name="system" xsi:type="object">Egits\Before\Logger\Handler</item>
+           </argument>
+       </arguments>
+   </type>
+     <type name="Magento\Customer\Controller\Account\CreatePost">
+        <plugin name="CreatePost_register" type="Egits\Before\Plugin\CreatePost" sortOrder="1" />
+    </type>
+</config>
