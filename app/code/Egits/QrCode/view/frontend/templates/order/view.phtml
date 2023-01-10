@@ -1,0 +1,13 @@
+<?php /** @var  $block \Magento\Sales\Block\Order\View*/?>
+
+    <?php $_order = $block->getOrder(); 
+   $orderIncrementId= $_order->getIncrementId();
+  
+//    echo (get_class($block)) ;
+
+$viewModel = $block->getData('viewModel');
+$qrcodesize=$viewModel->getqrcodesize();
+
+   ?>
+<img src="<?php echo $viewModel->getMediaUrl() . 'qrcode/'.$orderIncrementId.'.png'; ?>" 
+width="<?= $qrcodesize ?>"/>

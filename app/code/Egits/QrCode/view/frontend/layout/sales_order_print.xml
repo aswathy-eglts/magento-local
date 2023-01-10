@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+ <update handle="sales_order_print_renderers" />
+    <update handle="sales_order_item_price"/>
+    <update handle="print" />
+ <referenceContainer name="page.main.title">
+            <block class="Magento\Sales\Block\Order\View" name="sales.order.print1"  after="order.status" template="Egits_QrCode::order/view.phtml" cacheable="false">
+              <arguments>
+                    <argument name="viewModel" xsi:type="object">Egits\QrCode\ViewModel\OrderIncrement</argument>
+                </arguments>
+            </block>
+</referenceContainer>
+</page>
+ 
+
+ 
+ 
+
+
+
