@@ -40,7 +40,8 @@ class Order implements \Magento\Framework\Event\ObserverInterface
         \Magento\Framework\Filesystem\Io\File $io,
         \Magento\Framework\Filesystem\DirectoryList $dir,
         \Magento\Framework\Message\ManagerInterface $_messageManager,
-        \Egits\QrCode\Logger\Logger $logger
+        \Egits\QrCode\Logger\Logger $logger,
+        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
 
     )
     {
@@ -51,10 +52,21 @@ class Order implements \Magento\Framework\Event\ObserverInterface
         $this->directoryList = $dir;
         $this->_messageManager = $_messageManager;
         $this->logger = $logger; 
+        $this->scopeConfig = $scopeConfig;
+    }
+    public function getqrcodesize()
+    {
+        
+       
     }
 
     public function execute(\Magento\Framework\Event\Observer $observer)
     {
+
+           $valueFromConfig = $this->scopeConfig->getValue(
+            'size/general/size',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+            
 
         $order = $observer->getEvent()->getOrder();
         $order_id = $order->getIncrementId();
@@ -64,7 +76,7 @@ class Order implements \Magento\Framework\Event\ObserverInterface
         $qrCode = QrCode::create($order_id )
         ->setEncoding(new Encoding('UTF-8'))
         ->setErrorCorrectionLevel(new ErrorCorrectionLevelLow())
-        ->setSize(200)
+        ->setSize($valueFromConfig)
         ->setMargin(10)
         ->setRoundBlockSizeMode(new RoundBlockSizeModeMargin())
         ->setForegroundColor(new Color(0, 0, 0))

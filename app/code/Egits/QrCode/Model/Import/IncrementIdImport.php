@@ -91,9 +91,8 @@ class IncrementIdImport extends AbstractEntity implements ObserverInterface
          ProcessingErrorAggregatorInterface $errorAggregator,
          Filesystem $filesystem,
          DirectoryList $dir,
-         File $io
-
-
+         File $io,
+         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
      ) {
          $this->filesystem = $filesystem;
          $this->io= $io;
@@ -105,6 +104,7 @@ class IncrementIdImport extends AbstractEntity implements ObserverInterface
          $this->resource = $resource;
          $this->connection = $resource->getConnection(ResourceConnection::DEFAULT_CONNECTION);
          $this->errorAggregator = $errorAggregator;
+         $this->scopeConfig = $scopeConfig;
       }
 
      /**
@@ -250,12 +250,16 @@ class IncrementIdImport extends AbstractEntity implements ObserverInterface
                  $incrementid=substr($row[static::INCREMENTID],1);
                  $rows[] = $incrementid;
 
+                 $valueFromConfig = $this->scopeConfig->getValue(
+                    'size/general/size',
+                    \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+
                  $writer = new PngWriter();
                         // Create QR code
                         $qrCode = QrCode::create($incrementid)
                         ->setEncoding(new Encoding('UTF-8'))
                         ->setErrorCorrectionLevel(new ErrorCorrectionLevelLow())
-                        ->setSize(200)
+                        ->setSize($valueFromConfig)
                         ->setMargin(10)
                         ->setRoundBlockSizeMode(new RoundBlockSizeModeMargin())
                         ->setForegroundColor(new Color(0, 0, 0))

@@ -10,12 +10,9 @@ class OrderIncrement implements ArgumentInterface
     public function __construct(
       
         \Magento\Store\Model\StoreManagerInterface $storeManager,
-        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-
+    
     ) {
         $this->storeManager = $storeManager;
-        $this->scopeConfig = $scopeConfig;
-
     }
 
 
@@ -27,16 +24,6 @@ class OrderIncrement implements ArgumentInterface
     {
         $mediaurl= $this->storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
         return $mediaurl;
-    }
-
-    
-    public function getqrcodesize()
-    {
-        
-        $valueFromConfig = $this->scopeConfig->getValue(
-            'size/general/size',
-            \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
-            return $valueFromConfig;
     }
     
 }

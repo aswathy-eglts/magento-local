@@ -6,8 +6,6 @@
 //    echo (get_class($block)) ;
 
 $viewModel = $block->getData('viewModel');
-$qrcodesize=$viewModel->getqrcodesize();
 
    ?>
-<img src="<?php echo $viewModel->getMediaUrl() . 'qrcode/'.$orderIncrementId.'.png'; ?>" 
-width="<?= $qrcodesize ?>"/>
+<img src="<?php echo $viewModel->getMediaUrl() . 'qrcode/'.$orderIncrementId.'.png'; ?>"/>
