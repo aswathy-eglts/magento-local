@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Egits_ImageUpload::promo" title="PROMO" module="Egits_ImageUpload" 
+        sortOrder="51" resource="Egits_ImageUpload::promo"/>
+
+        <add id="Egits_ImageUpload::image" title="Promo Title" module="Egits_ImageUpload" sortOrder="10"
+         action="adminform/promo/index" resource="Egits_ImageUpload::image"
+          parent="Egits_ImageUpload::promo"/>
+    </menu>
+</config>

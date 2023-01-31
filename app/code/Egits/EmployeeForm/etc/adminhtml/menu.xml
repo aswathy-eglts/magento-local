@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Egits_EmployeeForm::employee" title="EMPLOYEE" module="Egits_EmployeeForm" 
+        sortOrder="51" resource="Egits_EmployeeForm::employee"/>
+
+        <add id="Egits_EmployeeForm::form" title="Employee Form" module="Egits_EmployeeForm" sortOrder="10"
+         action="employeeform/index/index" resource="Egits_EmployeeForm::form"
+          parent="Egits_EmployeeForm::employee"/>
+    </menu>
+</config>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+  <argument name="data" xsi:type="array">
+     <item name="js_config" xsi:type="array">
+        <item name="provider" xsi:type="string">adminform_promo_form.adminform_promo_form_data_source</item>
+        <item name="deps" xsi:type="string">adminform_promo_form.adminform_promo_form_data_source</item>
+     </item>
+     <item name="label" xsi:type="string" translate="true"> Promo</item>
+     <item name="config" xsi:type="array">
+        <item name="dataScope" xsi:type="string">data</item>
+        <item name="namespace" xsi:type="string">promo_form</item>
+     </item>
+     <item name="template" xsi:type="string">templates/form/collapsible</item>
+     <item name="buttons" xsi:type="array">
+        <item name="save" xsi:type="string">Egits\ImageUpload\Block\Adminhtml\Promo\Save</item>
+     </item>
+  </argument>
+  <dataSource name="adminform_promo_form_data_source">
+     <argument name="dataProvider" xsi:type="configurableObject">
+        <argument name="class" xsi:type="string">Egits\ImageUpload\Model\DataProvider</argument>
+        <argument name="name" xsi:type="string">adminform_promo_form_data_source</argument>
+        <argument name="primaryFieldName" xsi:type="string">id</argument>
+        <argument name="requestFieldName" xsi:type="string">id</argument>
+        <argument name="data" xsi:type="array">
+           <item name="config" xsi:type="array">
+              <item name="submit_url" xsi:type="url" path="*/*/save"/>
+           </item>
+        </argument>
+     </argument>
+     <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+           <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+        </item>
+     </argument>
+  </dataSource>
+  <fieldset name="promo">
+     <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+           <item name="collapsible" xsi:type="boolean">false</item>
+           <item name="label" xsi:type="string" translate="true">Brand Details</item>
+           <item name="sortOrder" xsi:type="number">20</item>
+        </item>
+     </argument>
+     <field name="description">
+        <argument name="data" xsi:type="array">
+           <item name="config" xsi:type="array">
+              <item name="dataType" xsi:type="string">text</item>
+              <item name="label" xsi:type="string" translate="true"> Brand</item>
+              <item name="formElement" xsi:type="string">input</item>
+              <item name="source" xsi:type="string">brands</item>
+              <item name="dataScope" xsi:type="string">description</item>
+           </item>
+        </argument>
+     </field>
+     <field name="image" formElement="imageUploader">
+        <settings>
+           <label translate="true">Images</label>
+           <componentType>imageUploader</componentType>
+           <validation>
+              <rule name="required-entry" xsi:type="boolean">true</rule>
+           </validation>
+        </settings>
+        <formElements>
+           <imageUploader>
+              <settings>
+                 <allowedExtensions>jpg jpeg png</allowedExtensions>
+                 <maxFileSize>2097152</maxFileSize>
+                 <uploaderConfig>
+                    <param xsi:type="string" name="url">
+                    adminform/promo/tempUpload</param>
+                 </uploaderConfig>
+              </settings>
+           </imageUploader>
+        </formElements>
+     </field>
+  </fieldset>
+</form>
